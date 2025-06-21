@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Evento - Escuela de Cerrillos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-school me-2"></i>
+                Escuela de Cerrillos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-dashboard.html">Panel Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="crear-evento.html">Crear Evento</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-shield me-1"></i>Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="admin-dashboard.html">Panel Admin</a></li>
+                            <li><a class="dropdown-item" href="crear-evento.html">Crear Evento</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card admin-card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">
+                            <i class="fas fa-calendar-plus me-2"></i>
+                            <span id="formTitle">Crear Nuevo Evento</span>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="eventoForm">
+                            <div class="row">
+                                <div class="col-md-8 mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="titulo" placeholder="Título del evento" required>
+                                        <label for="titulo">Título del Evento</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="categoria">
+                                            <option value="bingo">Bingo</option>
+                                            <option value="baile">Baile</option>
+                                            <option value="venta">Venta de Comida</option>
+                                            <option value="festival">Festival</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                        <label for="categoria">Categoría</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="descripcion" placeholder="Descripción del evento" style="height: 120px" required></textarea>
+                                    <label for="descripcion">Descripción del Evento</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="fecha" required>
+                                        <label for="fecha">Fecha</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-floating">
+                                        <input type="time" class="form-control" id="hora" required>
+                                        <label for="hora">Hora</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="lugar" placeholder="Lugar del evento" required>
+                                        <label for="lugar">Lugar</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="transporte">
+                                        <label class="form-check-label" for="transporte">
+                                            <i class="fas fa-bus me-2"></i>Transporte Disponible
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="activo" checked>
+                                        <label class="form-check-label" for="activo">
+                                            <i class="fas fa-eye me-2"></i>Evento Activo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="imagen" class="form-label">
+                                    <i class="fas fa-image me-2"></i>Imagen del Evento
+                                </label>
+                                <input type="file" class="form-control" id="imagen" accept="image/*">
+                                <div class="form-text">Formatos permitidos: JPG, PNG, GIF. Tamaño máximo: 2MB</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="contacto" placeholder="Información de contacto">
+                                    <label for="contacto">Información de Contacto (Opcional)</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="notas" placeholder="Notas adicionales" style="height: 80px"></textarea>
+                                    <label for="notas">Notas Adicionales (Opcional)</label>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-3">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Guardar Evento
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary" onclick="limpiarFormulario()">
+                                    <i class="fas fa-eraser me-2"></i>Limpiar
+                                </button>
+                                <a href="admin-dashboard.html" class="btn btn-outline-danger">
+                                    <i class="fas fa-times me-2"></i>Cancelar
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Vista previa del evento -->
+                <div class="card mt-4" id="previewCard" style="display: none;">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-eye me-2"></i>Vista Previa
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="eventoPreview"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        let isEditing = false;
+        let editingId = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!requireAuth()) {
+                return;
+            }
+
+            // Verificar si estamos editando un evento
+            const urlParams = new URLSearchParams(window.location.search);
+            const eventoId = urlParams.get('id');
+            
+            if (eventoId) {
+                isEditing = true;
+                editingId = eventoId;
+                document.getElementById('formTitle').textContent = 'Editar Evento';
+                cargarEventoParaEditar(eventoId);
+            }
+
+            // Event listeners para vista previa
+            const form = document.getElementById('eventoForm');
+            const inputs = form.querySelectorAll('input, textarea, select');
+            
+            inputs.forEach(input => {
+                input.addEventListener('input', actualizarVistaPrevia);
+                input.addEventListener('change', actualizarVistaPrevia);
+            });
+
+            // Manejar envío del formulario
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                guardarEvento();
+            });
+        });
+
+        function cargarEventoParaEditar(id) {
+            // En producción, esto sería una llamada a la API de .NET
+            const evento = eventos.find(e => e.id == id);
+            if (evento) {
+                document.getElementById('titulo').value = evento.titulo;
+                document.getElementById('descripcion').value = evento.descripcion;
+                document.getElementById('fecha').value = evento.fecha;
+                document.getElementById('hora').value = evento.hora;
+                document.getElementById('lugar').value = evento.lugar;
+                document.getElementById('transporte').checked = evento.transporte;
+                document.getElementById('activo').checked = evento.estado === 'activo';
+                
+                actualizarVistaPrevia();
+            }
+        }
+
+        function actualizarVistaPrevia() {
+            const titulo = document.getElementById('titulo').value;
+            const descripcion = document.getElementById('descripcion').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const lugar = document.getElementById('lugar').value;
+            const transporte = document.getElementById('transporte').checked;
+
+            if (titulo && descripcion && fecha && hora && lugar) {
+                const fechaFormateada = new Date(fecha).toLocaleDateString('es-ES', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+
+                const preview = `
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-success">Próximo</span>
+                                <small class="text-muted">${fechaFormateada}</small>
+                            </div>
+                            <h5 class="card-title">${titulo}</h5>
+                            <p class="card-text">${descripcion}</p>
+                            <div class="mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-map-marker-alt me-1"></i>${lugar}<br>
+                                    <i class="fas fa-clock me-1"></i>${hora}<br>
+                                    <i class="fas fa-${transporte ? 'bus' : 'times'} me-1 text-${transporte ? 'success' : 'danger'}"></i>
+                                    ${transporte ? 'Transporte disponible' : 'Sin transporte'}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('eventoPreview').innerHTML = preview;
+                document.getElementById('previewCard').style.display = 'block';
+            } else {
+                document.getElementById('previewCard').style.display = 'none';
+            }
+        }
+
+        function guardarEvento() {
+            const formData = new FormData();
+            formData.append('titulo', document.getElementById('titulo').value);
+            formData.append('descripcion', document.getElementById('descripcion').value);
+            formData.append('fecha', document.getElementById('fecha').value);
+            formData.append('hora', document.getElementById('hora').value);
+            formData.append('lugar', document.getElementById('lugar').value);
+            formData.append('transporte', document.getElementById('transporte').checked);
+            formData.append('activo', document.getElementById('activo').checked);
+            formData.append('categoria', document.getElementById('categoria').value);
+            formData.append('contacto', document.getElementById('contacto').value);
+            formData.append('notas', document.getElementById('notas').value);
+
+            const imagen = document.getElementById('imagen').files[0];
+            if (imagen) {
+                formData.append('imagen', imagen);
+            }
+
+            // En producción, esto sería una llamada a la API de .NET
+            // const endpoint = isEditing ? `/api/eventos/${editingId}` : '/api/eventos';
+            // const method = isEditing ? 'PUT' : 'POST';
+
+            // Simulación de guardado exitoso
+            setTimeout(() => {
+                const mensaje = isEditing ? 'Evento actualizado correctamente' : 'Evento creado correctamente';
+                showAlert(mensaje, 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'admin-dashboard.html';
+                }, 1500);
+            }, 1000);
+        }
+
+        function limpiarFormulario() {
+            if (confirm('¿Está seguro de que desea limpiar el formulario?')) {
+                document.getElementById('eventoForm').reset();
+                document.getElementById('previewCard').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

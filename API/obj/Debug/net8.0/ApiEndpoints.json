@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "API_Cerrillos.Controllers.CuentasController",
+    "Method": "VerificarCredenciales",
+    "RelativePath": "api/Cuentas/VerificarCredenciales",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cuenta",
+        "Type": "API_Cerrillos.Models.Cuentas",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
