@@ -9,7 +9,7 @@ namespace API_Cerrillos.Models
 
         public string TituloEvento { get; set; }
 
-        public string Categoria { get; set; }
+        public int Categoria { get; set; }
 
         public string Descripcion { get; set; }
 
@@ -24,5 +24,12 @@ namespace API_Cerrillos.Models
         public string InfoContacto { get; set; }
 
         public string Notas { get; set; }
+
+        public string Correo { get; set; }
+
+        public string Transporte { get; set; }
+
+        public string Estado { get; set; }
+        public ICollection<CategoriaEvento> CategoriaEventos { get; set; } = new List<CategoriaEvento>();
     }
 }

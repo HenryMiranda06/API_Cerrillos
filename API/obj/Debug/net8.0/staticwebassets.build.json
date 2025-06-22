@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "WgR5OOi5c+AlNYPPioPT3tszUh5krw32sXVud9mfz4k=",
+  "Hash": "8h5jRbGnd+f+Yid+T+SQnkBoFAWjIkxxUj9+3MiPw2c=",
   "Source": "API_Cerrillos",
   "BasePath": "_content/API_Cerrillos",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }
